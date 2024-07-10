@@ -24,6 +24,14 @@
                             <li><a class="slide-item">كشف حساب للمورد</a></li>
                         </ul>
                     </li>
+                    <li class="slide">
+                        <a class="side-menu__item" data-toggle="slide" ><span class="side-menu__label">الفئات</span><i class="angle fe fe-chevron-down"></i></a>
+                        <ul class="slide-menu">
+                            <li><a href="{{route('Category.create')}}" class="slide-item">أضافة فئة</a></li>
+                            <li><a href="{{route('Category.index')}}" class="slide-item">بيانات الفئات</a></li>
+                            <li><a class="slide-item">كشف حساب للمورد</a></li>
+                        </ul>
+                    </li>
 					<li class="slide">
 						<a class="side-menu__item" data-toggle="slide" href="{{ url('/' . $page='#') }}">
                             <span class="side-menu__label">المخازن</span><i class="angle fe fe-chevron-down"></i>

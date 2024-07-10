@@ -8,9 +8,9 @@ class CreateCollectionsTable extends Migration {
 	public function up()
 	{
 		Schema::create('Collections', function(Blueprint $table) {
-			$table->increments('id', true);
+			$table->id()->autoIncrement();
 			$table->timestamps();
-			$table->integer('customer_id')->unsigned();
+			$table->bigInteger('customer_id')->unsigned();
 			$table->float('amount');
 			$table->date('collection_date');
 			$table->enum('status', array('pending', 'completed'));

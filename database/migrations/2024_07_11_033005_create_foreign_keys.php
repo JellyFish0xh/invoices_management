@@ -10,11 +10,11 @@ class CreateForeignKeys extends Migration {
 	{
 		Schema::table('Products', function(Blueprint $table) {
 			$table->foreign('stock_id')->references('id')->on('Stocks')
-						->onDelete('restrict')
+						->onDelete('cascade')
 						->onUpdate('restrict');
 		});
 		Schema::table('Products', function(Blueprint $table) {
-			$table->foreign('supplier_id')->references('id')->on('Suppliers')
+			$table->foreign('category_id')->references('id')->on('categories')
 						->onDelete('restrict')
 						->onUpdate('restrict');
 		});
@@ -61,7 +61,7 @@ class CreateForeignKeys extends Migration {
 			$table->dropForeign('Products_stock_id_foreign');
 		});
 		Schema::table('Products', function(Blueprint $table) {
-			$table->dropForeign('Products_supplier_id_foreign');
+			$table->dropForeign('Products_category_id_foreign');
 		});
 		Schema::table('Bills', function(Blueprint $table) {
 			$table->dropForeign('Bills_customer_id_foreign');

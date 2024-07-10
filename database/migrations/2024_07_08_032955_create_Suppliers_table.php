@@ -8,7 +8,7 @@ class CreateSuppliersTable extends Migration {
 	public function up()
 	{
 		Schema::create('Suppliers', function(Blueprint $table) {
-			$table->increments('id', true);
+			$table->id()->autoIncrement();
 			$table->string('name');
 			$table->string('contact_details');
 			$table->timestamps();

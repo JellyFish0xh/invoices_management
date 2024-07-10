@@ -8,9 +8,9 @@ class CreateBillProductTable extends Migration {
 	public function up()
 	{
 		Schema::create('Bill_Product', function(Blueprint $table) {
-			$table->increments('id', true);
-			$table->integer('bill_id')->unsigned();
-			$table->integer('product_id')->unsigned();
+			$table->id()->autoIncrement();
+			$table->bigInteger('bill_id')->unsigned();
+			$table->bigInteger('product_id')->unsigned();
 			$table->integer('quantity');
 			$table->string('price');
 			$table->timestamps();
