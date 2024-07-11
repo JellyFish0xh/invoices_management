@@ -4,11 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Supplier extends Model 
+class Supplier extends Model
 {
 
     protected $table = 'Suppliers';
     public $timestamps = true;
+    protected $fillable=["name","contact_details"];
 
     public function products()
     {
