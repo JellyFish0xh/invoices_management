@@ -4,23 +4,21 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProductsTable extends Migration {
+class CreateStockProductTable extends Migration {
 
 	public function up()
 	{
-		Schema::create('Products', function(Blueprint $table) {
+		Schema::create('Stock_Product', function(Blueprint $table) {
 			$table->id()->autoIncrement();
+			$table->bigInteger('product_id')->unsigned();
 			$table->bigInteger('stock_id')->unsigned();
-			$table->bigInteger('category_id')->unsigned();
-			$table->string('name');
-			$table->float('buy_price');
-			$table->float('sell_price');
+			$table->integer('quantity')->nullable();
 			$table->timestamps();
 		});
 	}
 
 	public function down()
 	{
-		Schema::drop('Products');
+		Schema::drop('Stock_Product');
 	}
 }

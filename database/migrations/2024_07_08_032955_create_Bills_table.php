@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateBillsTable extends Migration {
 
@@ -15,6 +16,7 @@ class CreateBillsTable extends Migration {
 			$table->float('total');
 			$table->enum('type', array('paid', 'postpaid'));
 			$table->enum('bill_for', array('purchase', 'sale'));
+			$table->softDeletes();
 			$table->timestamps();
 		});
 	}

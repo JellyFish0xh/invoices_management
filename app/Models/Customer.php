@@ -6,10 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Customer extends Model
 {
-
     protected $table = 'Customers';
     public $timestamps = true;
-
     public function bills()
     {
         return $this->hasMany('App\Models\Bill', 'customer_id');

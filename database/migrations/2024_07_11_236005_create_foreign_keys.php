@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Schema;
 
 class CreateForeignKeys extends Migration {
 
@@ -50,6 +51,26 @@ class CreateForeignKeys extends Migration {
 		});
 		Schema::table('Collections', function(Blueprint $table) {
 			$table->foreign('customer_id')->references('id')->on('Customers')
+						->onDelete('restrict')
+						->onUpdate('restrict');
+		});
+		Schema::table('Stock_Product', function(Blueprint $table) {
+			$table->foreign('product_id')->references('id')->on('Products')
+						->onDelete('restrict')
+						->onUpdate('restrict');
+		});
+		Schema::table('Stock_Product', function(Blueprint $table) {
+			$table->foreign('stock_id')->references('id')->on('Stocks')
+						->onDelete('restrict')
+						->onUpdate('restrict');
+		});
+		Schema::table('Starting_quantities', function(Blueprint $table) {
+			$table->foreign('product_id')->references('id')->on('Products')
+						->onDelete('restrict')
+						->onUpdate('restrict');
+		});
+		Schema::table('Starting_quantities', function(Blueprint $table) {
+			$table->foreign('stock_id')->references('id')->on('Stocks')
 						->onDelete('restrict')
 						->onUpdate('restrict');
 		});

@@ -8,10 +8,10 @@
 				<div class="app-sidebar__user clearfix">
 					<div class="dropdown user-pro-body">
 						<div class="">
-							<img alt="user-img" class="avatar avatar-xl brround" src='{{URL::asset('assets/img/faces/'.auth()->user()->name.'.jpg')}}'><span class="avatar-status profile-status bg-green"></span>
+							<img alt="user-img" class="avatar avatar-xl brround" src='{{URL::asset('assets/img/faces/'.auth()->user()["name"].'.jpg')}}'><span class="avatar-status profile-status bg-green"></span>
 						</div>
 						<div class="user-info">
-							<h4 class="font-weight-semibold mt-3 mb-0">{{(auth()->user()->name)}}</h4>
+							<h4 class="font-weight-semibold mt-3 mb-0">{{(auth()->user()["name"])}}</h4>
 						</div>
 					</div>
 				</div>
@@ -29,7 +29,6 @@
                         <ul class="slide-menu">
                             <li><a href="{{route('Category.create')}}" class="slide-item">أضافة فئة</a></li>
                             <li><a href="{{route('Category.index')}}" class="slide-item">بيانات الفئات</a></li>
-                            <li><a class="slide-item">كشف حساب للمورد</a></li>
                         </ul>
                     </li>
 					<li class="slide">
@@ -37,7 +36,7 @@
                             <span class="side-menu__label">المخازن</span><i class="angle fe fe-chevron-down"></i>
                         </a>
 						<ul class="slide-menu">
-							<li><a href="{{route('Stock.create')}} "class="slide-item">أضافة مخزن</a></li>
+							<li><a href="{{route('Stock.create')}} " class="slide-item">أضافة مخزن</a></li>
 							<li><a class="slide-item">بضايع المخازن</a></li>
 							<li><a href="{{route('Stock.index')}}" class="slide-item">بيانات المخازن</a></li>
 						</ul>
@@ -46,7 +45,7 @@
                         <a class="side-menu__item" data-toggle="slide"><span class="side-menu__label">المنتجات</span><i class="angle fe fe-chevron-down"></i></a>
                         <ul class="slide-menu">
                             <li><a href="{{route('Product.create')}}" class="slide-item">اضافة منتج</a></li>
-                            <li><a  href="{{route('Product.index')}}"class="slide-item">بيانات المنتجات</a></li>
+                            <li><a  href="{{route('Product.index')}}" class="slide-item">بيانات المنتجات</a></li>
                             <li><a class="slide-item">حركة المنتج</a></li>
                         </ul>
                     </li>

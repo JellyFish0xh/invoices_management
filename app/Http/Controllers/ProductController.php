@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Customer;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -54,7 +56,7 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        $supplier_Data = Customer::where("id", "$id")->first();
+        $supplier_Data = Customer::where('id', "$id")->first();
         return view('customer.Edit',compact('supplier_Data'));
     }
 
