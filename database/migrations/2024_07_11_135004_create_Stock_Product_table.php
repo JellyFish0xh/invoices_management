@@ -12,7 +12,9 @@ class CreateStockProductTable extends Migration {
 			$table->id()->autoIncrement();
 			$table->bigInteger('product_id')->unsigned();
 			$table->bigInteger('stock_id')->unsigned();
-			$table->integer('quantity')->nullable();
+            $table->bigInteger('Base_Quantity')->nullable();
+            $table->bigInteger('Quantity_purchased')->nullable();
+            $table->bigInteger('Quantity_sold')->nullable();
 			$table->timestamps();
 		});
 	}
