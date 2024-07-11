@@ -9,6 +9,7 @@ class Stock extends Model
 
     protected $table = 'Stocks';
     public $timestamps = true;
+    protected $fillable = ["name"];
 
     public function stocks()
     {

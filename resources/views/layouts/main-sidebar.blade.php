@@ -19,8 +19,8 @@
                     <li class="slide">
                         <a class="side-menu__item" data-toggle="slide" ><span class="side-menu__label">الموردين</span><i class="angle fe fe-chevron-down"></i></a>
                         <ul class="slide-menu">
-                            <li><a class="slide-item">أضافة مورد</a></li>
-                            <li><a class="slide-item">بيانات الموردين</a></li>
+                            <li><a href="{{route('Supplier.create')}}"  class="slide-item" >أضافة مورد</a></li>
+                            <li><a  href="{{route('Supplier.index')}}" class="slide-item">بيانات الموردين</a></li>
                             <li><a class="slide-item">كشف حساب للمورد</a></li>
                         </ul>
                     </li>
@@ -37,24 +37,24 @@
                             <span class="side-menu__label">المخازن</span><i class="angle fe fe-chevron-down"></i>
                         </a>
 						<ul class="slide-menu">
-							<li><a class="slide-item">أضافة مخزن</a></li>
+							<li><a href="{{route('Stock.create')}} "class="slide-item">أضافة مخزن</a></li>
 							<li><a class="slide-item">بضايع المخازن</a></li>
-							<li><a class="slide-item">بيانات المخازن</a></li>
+							<li><a href="{{route('Stock.index')}}" class="slide-item">بيانات المخازن</a></li>
 						</ul>
 					</li>
                     <li class="slide">
                         <a class="side-menu__item" data-toggle="slide"><span class="side-menu__label">المنتجات</span><i class="angle fe fe-chevron-down"></i></a>
                         <ul class="slide-menu">
-                            <li><a class="slide-item">اضافة منتج</a></li>
-                            <li><a class="slide-item">بيانات المنتجات</a></li>
+                            <li><a href="{{route('Product.create')}}" class="slide-item">اضافة منتج</a></li>
+                            <li><a  href="{{route('Product.index')}}"class="slide-item">بيانات المنتجات</a></li>
                             <li><a class="slide-item">حركة المنتج</a></li>
                         </ul>
                     </li>
 					<li class="slide">
 						<a class="side-menu__item" data-toggle="slide"><span class="side-menu__label">العملاء</span><i class="angle fe fe-chevron-down"></i></a>
 						<ul class="slide-menu">
-							<li><a class="slide-item">اضافة عميل</a></li>
-							<li><a class="slide-item">بيانات العملاء</a></li>
+							<li><a href="{{route('Customer.create')}}" class="slide-item">اضافة عميل</a></li>
+							<li><a href="{{route('Customer.index')}}" class="slide-item">بيانات العملاء</a></li>
 							<li><a class="slide-item">كشف حساب للعميل</a></li>
 						</ul>
 					</li>
