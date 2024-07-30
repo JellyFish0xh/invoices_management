@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Customer;
+use App\Models\category;
+use App\Models\Stock;
 use App\Models\Product;
+use App\Models\Customer;
+use App\Models\Stock_Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -14,7 +17,7 @@ class ProductController extends Controller
     public function index()
     {
         $all_product= Product::paginate(10);
-        return view('product.All', compact('all_product'));
+        return view('products.All', compact('all_product'));
     }
 
     /**
@@ -22,7 +25,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('customer.Add');
+        $all_stocks = Stock::all();
+        $all_cat = category::all();
+        return view('products.Add',compact(['all_stocks','all_cat']));
     }
 
     /**
@@ -30,17 +35,41 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        // Validate request data
         $validated = $request->validate([
-            'supplierName' => 'required|string|max:255',
-            'contactDetail' => 'required|string|max:255',
+            'ProductName' => 'required|string|max:255',
+            'CategoryID' => 'required|integer|exists:categories,id', // Assuming you have a categories table
+            'Stock_ID' => 'required|integer|exists:stocks,id', // Assuming you have a stocks table
+            'Base_quantity' => 'required|integer|min:1',
+            'sell_price' => 'required|numeric|min:0',
+            'buy_price' => 'required|numeric|min:0',
         ]);
-
-        $supplier = new Customer();
-        $supplier->name = $request->supplierName;
-        $supplier->contact_details = $request->contactDetail;
-        $supplier->save();
-
-        return redirect()->back()->with('success', 'تم اضافة العميل بنجاح');
+    
+        // Check if sell_price is greater than buy_price
+        if ($validated['sell_price'] <= $validated['buy_price']) {
+            return redirect()->back()->withErrors(['sell_price' => 'The sell price must be greater than the buy price.'])->withInput();
+        }
+    
+        try {
+            // Create new product
+            $new_product = Product::create([
+                'name' => $validated['ProductName'],
+                'category_id' => $validated['CategoryID'],
+                'sell_price' => $validated['sell_price'],
+                'buy_price' => $validated['buy_price'],
+            ]);
+    
+            // Create stock product entry
+            Stock_Product::create([
+                'product_id' => $new_product->id,
+                'stock_id' => $validated['Stock_ID'],
+                'Base_Quantity' => $validated['Base_quantity'],
+            ]);
+    
+            return redirect()->back()->with('success', 'تم اضافة المنتج بنجاح');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'حدث خطأ أثناء إضافة المنتج. يرجى المحاولة مرة أخرى.');
+        }
     }
 
     /**
@@ -82,7 +111,7 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        Customer::destroy($id);
-        return redirect()->back()->with('success', 'تم ازالة العميل بنجاح');
+        Product::destroy($id);
+        return redirect()->back()->with('success', 'تم ازالة المنتج بنجاح');
     }
 }

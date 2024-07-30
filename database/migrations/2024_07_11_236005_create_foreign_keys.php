@@ -10,11 +10,6 @@ class CreateForeignKeys extends Migration {
 	public function up()
 	{
 		Schema::table('Products', function(Blueprint $table) {
-			$table->foreign('stock_id')->references('id')->on('Stocks')
-						->onDelete('cascade')
-						->onUpdate('restrict');
-		});
-		Schema::table('Products', function(Blueprint $table) {
 			$table->foreign('category_id')->references('id')->on('categories')
 						->onDelete('restrict')
 						->onUpdate('restrict');

@@ -9,6 +9,11 @@ class Stock_Product extends Model
 
     protected $table = 'Stock_Product';
     public $timestamps = true;
+    protected $fillable = [
+        'product_id',
+        'stock_id',
+        'Base_Quantity',
+    ];
 
     public function stock()
     {

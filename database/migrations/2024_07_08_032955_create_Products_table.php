@@ -10,7 +10,6 @@ class CreateProductsTable extends Migration {
 	{
 		Schema::create('Products', function(Blueprint $table) {
 			$table->id()->autoIncrement();
-			$table->bigInteger('stock_id')->unsigned();
 			$table->bigInteger('category_id')->unsigned();
 			$table->string('name');
 			$table->float('buy_price');
